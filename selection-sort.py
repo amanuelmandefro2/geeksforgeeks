@@ -2,22 +2,20 @@
 
 class Solution: 
     def select(self, arr, i):
-        return arr[i]
+        min_idx = i
+        for j in range(i+1, len(arr)):
+            if arr[min_idx] > arr[j]:
+                min_idx = j
+        return min_idx
+            
+        
     
     def selectionSort(self, arr,n):
-        i = 0;
-
+        for i in range(n):
+            min_idx = self.select(arr, i)
+            if min_idx != i:
+                arr[i], arr[min_idx] = arr[min_idx], arr[i]
         
-        while i < n-1:
-            min_elem = self.select(arr, i)
-            min_index = i
-            for j in range(i+1, n):
-                if min_elem > arr[j]:
-                    min_index = j
-                    min_elem = arr[j]
-            
-            (arr[i], arr[min_index]) = (arr[min_index], arr[i])
-            i = i+ 1
 
 
 #{ 
